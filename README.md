@@ -1,4 +1,4 @@
-# Book Library CRUD Application
+# Book Library Node & Express JS Application
 
 ## Overview
 
