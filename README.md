@@ -91,7 +91,7 @@ This application is a simple book library management system built using Node.js 
 
 ## JavaScript Files
 
-- **`script.js`**: Handles the frontend interactions on the main page, including opening the modal for adding a book and updating the book list.
+- **`main.js`**: Handles the frontend interactions on the main page, including opening the modal for adding a book and updating the book list.
 - **`details.js`**: Manages the book details page, including fetching book details from the server, updating the book status, deleting a book and navigating back to the library page.
 
 ## Error Handling
