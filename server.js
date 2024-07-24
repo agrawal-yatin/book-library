@@ -4,12 +4,9 @@ const bodyParser = require("body-parser"); // Middleware to parse JSON bodies
 const fs = require("fs").promises; // File system module to interact with the file system
 const path = require("path"); // Module to handle and transform file paths
 const cors = require("cors"); // Middleware to enable CORS (Cross-Origin Resource Sharing)
-const dotenv = require("dotenv"); // Load environment variables
-
-dotenv.config(); 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // Enable CORS to allow cross-origin requests
 app.use(cors());
@@ -18,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Define the path to the data file
-const dataFilePath = path.join(__dirname, "books.json");
+const dataFilePath = path.join(__dirname, "book-store.json");
 
 // Function to load books data from the file
 const loadBooks = async () => {

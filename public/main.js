@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button onclick="deleteBook(${
                   book.id
                 })" class="btn btn-sm btn-danger">Delete</button>
-                <a href="details.html?id=${
+                <a href="view/details.html?id=${
                   book.id
                 }" class="btn btn-sm btn-secondary">View Details</a>
               </div>

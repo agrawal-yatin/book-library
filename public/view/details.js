@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           if (response.ok) {
             // Redirect to the main page after deletion
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
           } else {
             alert("Error deleting book");
           }
