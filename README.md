@@ -23,7 +23,7 @@ This application is a simple book library management system built using Node.js 
 
 ## File Structure
 
-- `index.js`: Main server file with Express setup and API routes.
+- `server.js`: Main server file with Express setup and API routes.
 - `books.json`: Data file to store book information.
 - `public/index.html`: Main HTML file for the frontend.
 - `public/style.css`: Custom styles for the frontend.
