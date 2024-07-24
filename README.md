@@ -26,10 +26,11 @@ This application is a simple book library management system built using Node.js 
 - `server.js`: Main server file with Express setup and API routes.
 - `books.json`: Data file to store book information.
 - `public/index.html`: Main HTML file for the frontend.
-- `public/style.css`: Custom styles for the frontend.
-- `public/script.js`: JavaScript for handling frontend interactions.
-- `public/details.html`: HTML file for viewing detailed information about a specific book.
-- `public/details.js`: JavaScript file for handling the book details page.
+- `public/styles/style.css`: Custom styles for the frontend.
+- `public/main.js`: JavaScript for handling frontend interactions.
+- `public/view/details.html`: HTML file for viewing detailed information about a specific book.
+- `public/view/details.js`: JavaScript file for handling the book details page.
+- `public/assets`: Folder for storing images/favicons.
 - `package.json`: Node.js package configuration file.
 
 ## Prerequisites
