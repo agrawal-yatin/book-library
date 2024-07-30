@@ -72,28 +72,31 @@ document.addEventListener("DOMContentLoaded", () => {
           const bookItem = document.createElement("div");
           bookItem.className = "book-item col-md-4";
           bookItem.innerHTML = `
-            <div class="card mb-4">
+            <div class="card mb-4 frosted-glass">
+              <img class="card-img-top" src="assets/book-placeholder.png" alt="Book image">
               <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
                 <p class="card-text"><strong>Status:</strong> ${book.status}</p>
-                <p class="card-text"><strong>Description:</strong> ${
-                  book.description
-                }</p>
+                 <div class="action-buttons">
+                  <p class="card-text"><strong>Description:</strong> ${
+                    book.description
+                  }</p>
                 <p class="card-text"><strong>Date Added:</strong> ${new Date(
                   book.date
                 ).toLocaleDateString()}</p>
                 <button onclick="toggleStatus(${
                   book.id
-                })" class="btn btn-sm btn-info">${
+                })" class="btn btn-sm btn-warning"><i class="fa fa-home"></i>${
             book.status === "Read" ? "Mark Unread" : "Mark Read"
           }</button>
                 <button onclick="deleteBook(${
                   book.id
-                })" class="btn btn-sm btn-danger">Delete</button>
+                })" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
                 <a href="view/details.html?id=${
                   book.id
-                }" class="btn btn-sm btn-secondary">View Details</a>
+                }" class="btn btn-sm btn-info"><i class="fa fa-bars"></i>View Details</a>
+                </div>
               </div>
             </div>
           `;
@@ -116,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const author = document.getElementById("author").value;
     const status = document.getElementById("status").value;
     const description = document.getElementById("description").value;
-    const date = new Date().toISOString();
+    const date = new Date().toISOString().split("T")[0];
 
     try {
       const response = await fetch(apiUrl, {
@@ -127,8 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         fetchBooks(filterUrl(filterDropdown.value));
-        modal.style.display = "none"; // Close the modal
-        addBookForm.reset(); // Reset the form
+        modal.style.display = "none";
+        addBookForm.reset();
       } else {
         alert("Error adding book");
       }

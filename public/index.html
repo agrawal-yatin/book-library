@@ -6,24 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Library</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" type="image/x-icon" sizes="32x32" href="assets/favicon.ico">
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="my-4">Book Library</h1>
-
-        <!-- Filter and Add Book Button -->
-        <div class="d-flex justify-content-between mb-4">
-            <select class="form-control w-25" id="filterStatus">
-                <option value="all">All</option>
-                <option value="Read">Read</option>
-                <option value="Unread">Unread</option>
-            </select>
-            <button id="openModal" class="btn btn-primary">Add Book</button>
+    <!-- Header Section -->
+    <header class="bg-light py-3 shadow-sm">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="assets/logo.png" alt="Company Logo" class="logo mr-3">
+                <h1 class="m-0">Book Library POC</h1>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="input-group mr-4">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Filter by Read Status</label>
+                    </div>
+                    <select class="custom-select" id="filterStatus">
+                        <option selected value="all">All</option>
+                        <option value="Read">Read</option>
+                        <option value="Unread">Unread</option>
+                    </select>
+                </div>
+                <button id="openModal" class="btn btn-primary">Add New Book</button>
+            </div>
         </div>
+    </header>
 
+    <!-- Main Content -->
+    <div class="container-fluid my-4">
         <!-- Books List -->
         <div id="booksList" class="row"></div>
         <p id="noBooksMessage" class="text-center" style="display: none;">No books available</p>
