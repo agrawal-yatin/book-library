@@ -1,4 +1,3 @@
-// Importing necessary modules
 const express = require("express"); // Express framework for building web applications
 const bodyParser = require("body-parser"); // Middleware to parse JSON bodies
 const fs = require("fs").promises; // File system module to interact with the file system
@@ -15,13 +14,18 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Define the path to the data file
-const dataFilePath = path.join(__dirname, "book-store.json");
+const dataFilePath = path.join(__dirname, "books.json");
 
 // Function to load books data from the file
 const loadBooks = async () => {
   try {
     const data = await fs.readFile(dataFilePath, "utf8");
-    return JSON.parse(data);
+    const books = JSON.parse(data);
+
+    // Sort books by date in descending order
+    books.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    return books;
   } catch (error) {
     console.error("Error loading books:", error);
     return [];
@@ -40,7 +44,7 @@ const saveBooks = async (books) => {
 // Endpoint to add a new book
 app.post("/api/books", async (req, res) => {
   const books = await loadBooks();
-  const { title, author, status, description, date } = req.body;
+  const { title, author, status, description } = req.body;
 
   const newBook = {
     id: books.length + 1,
@@ -48,10 +52,10 @@ app.post("/api/books", async (req, res) => {
     author,
     status,
     description,
-    date,
+    date: new Date().toISOString(),
   };
 
-  books.push(newBook);
+  books.unshift(newBook); // Add the new book to the beginning of the array
   await saveBooks(books);
   res.status(201).json(newBook);
 });

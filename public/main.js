@@ -51,14 +51,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Check if there are books that match the current filter
         const filterStatus = filterDropdown.value;
-        const filteredBooks =
-          filterStatus === "all"
-            ? books
-            : books.filter((book) => book.status === filterStatus);
+        let filteredBooks = books;
 
+        if (filterStatus !== "all") {
+          filteredBooks = books.filter((book) => book.status === filterStatus);
+        }
+
+        // Sort the filtered books by date in descending order
+        filteredBooks.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        // If no books match the filter, set dropdown to "all"
         if (filteredBooks.length === 0 && filterStatus !== "all") {
-          // If no books match the filter, set dropdown to "all"
           filterDropdown.value = "all";
+          filteredBooks = books;
+          filteredBooks.sort((a, b) => new Date(b.date) - new Date(a.date));
         }
 
         // Display each book in the books list
@@ -110,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const author = document.getElementById("author").value;
     const status = document.getElementById("status").value;
     const description = document.getElementById("description").value;
-    const date = new Date().toISOString().split("T")[0];
+    const date = new Date().toISOString();
 
     try {
       const response = await fetch(apiUrl, {
