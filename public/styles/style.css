@@ -171,3 +171,18 @@ body {
     color: #ffffff;
     text-shadow: 1px 1px 2px #000000;
 }
+
+/* Ensure the header remains fixed at the top */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensures the header stays above other content */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Apply a blur effect to the background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Optional: Add additional styles for header elements */
+.sticky-header .container-fluid {
+    padding: 0 1rem; /* Adjust padding as needed */
+}
