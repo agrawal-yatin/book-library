@@ -21,8 +21,18 @@
             </div>
             <div class="d-flex align-items-center">
                 <div class="input-group mr-4">
+                    <input type="text" class="form-control" id="authorOrTitleInput"
+                        placeholder="Type here..." aria-label="Filter by author / title"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button id="filterByAuthorOrTitle" class="btn btn-outline-secondary" type="button">Filter By
+                            Author / Title</button>
+                    </div>
+                </div>
+
+                <div class="input-group mr-4">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Filter by Read Status</label>
+                        <label class="input-group-text" for="filterStatus">Filter by Read Status</label>
                     </div>
                     <select class="custom-select" id="filterStatus">
                         <option selected value="all">All</option>
@@ -30,7 +40,7 @@
                         <option value="Unread">Unread</option>
                     </select>
                 </div>
-                <button id="openModal" class="btn btn-primary">Add New Book</button>
+                <button id="openModal" class="btn btn-info">Add New Book</button>
             </div>
         </div>
     </header>

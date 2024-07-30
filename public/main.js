@@ -2,14 +2,31 @@
 document.addEventListener("DOMContentLoaded", () => {
   // API URL for books
   const apiUrl = "http://localhost:3000/api/books";
-  // Function to create filter URL based on status
-  const filterUrl = (status) =>
-    status === "all" ? apiUrl : `${apiUrl}/filter/${status}`;
+  // Function to create filter URL based on status and author/title
+  const filterUrl = (status, authorOrTitle) => {
+    let url = `${apiUrl}`;
+    const params = [];
+
+    if (status && status !== "all") {
+      params.push(`status=${status}`);
+    }
+
+    if (authorOrTitle && authorOrTitle.trim()) {
+      params.push(`search=${encodeURIComponent(authorOrTitle)}`);
+    }
+
+    if (params.length > 0) {
+      url += `?${params.join("&")}`;
+    }
+
+    return url;
+  };
 
   // Select DOM elements
   const addBookForm = document.getElementById("addBookForm");
   const booksList = document.getElementById("booksList");
   const filterDropdown = document.getElementById("filterStatus");
+  const authorOrTitleInput = document.getElementById("authorOrTitleInput");
 
   const modal = document.getElementById("addBookModal");
   const openModalButton = document.getElementById("openModal");
@@ -49,26 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         noBooksMessage.style.display = "none";
 
-        // Check if there are books that match the current filter
-        const filterStatus = filterDropdown.value;
-        let filteredBooks = books;
-
-        if (filterStatus !== "all") {
-          filteredBooks = books.filter((book) => book.status === filterStatus);
-        }
-
-        // Sort the filtered books by date in descending order
-        filteredBooks.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        // If no books match the filter, set dropdown to "all"
-        if (filteredBooks.length === 0 && filterStatus !== "all") {
-          filterDropdown.value = "all";
-          filteredBooks = books;
-          filteredBooks.sort((a, b) => new Date(b.date) - new Date(a.date));
-        }
-
         // Display each book in the books list
-        filteredBooks.forEach((book) => {
+        books.forEach((book) => {
           const bookItem = document.createElement("div");
           bookItem.className = "book-item col-md-4";
           bookItem.innerHTML = `
@@ -110,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Fetch books initially
-  fetchBooks(apiUrl);
+  fetchBooks(filterUrl(filterDropdown.value, authorOrTitleInput.value));
 
   // Event listener for the form submission to add a new book
   addBookForm.addEventListener("submit", async (e) => {
@@ -129,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.ok) {
-        fetchBooks(filterUrl(filterDropdown.value));
+        fetchBooks(filterUrl(filterDropdown.value, authorOrTitleInput.value));
         modal.style.display = "none";
         addBookForm.reset();
       } else {
@@ -162,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (updateResponse.ok) {
-        fetchBooks(filterUrl(filterDropdown.value));
+        fetchBooks(filterUrl(filterDropdown.value, authorOrTitleInput.value));
       } else {
         alert("Error updating book status");
       }
@@ -181,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (response.ok) {
-          fetchBooks(filterUrl(filterDropdown.value));
+          fetchBooks(filterUrl(filterDropdown.value, authorOrTitleInput.value));
         } else {
           alert("Error deleting book");
         }
@@ -192,10 +191,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Event listener for filter button
+  document.getElementById("filterByAuthorOrTitle").addEventListener("click", () => {
+    fetchBooks(filterUrl(filterDropdown.value, authorOrTitleInput.value));
+  });
+
   // Event listener for filter dropdown change
   filterDropdown.addEventListener("change", () => {
-    const status = filterDropdown.value;
-    console.log("Filter status selected:", status);
-    fetchBooks(filterUrl(status));
+    fetchBooks(filterUrl(filterDropdown.value, authorOrTitleInput.value));
   });
 });

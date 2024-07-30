@@ -63,10 +63,27 @@ app.post("/api/books", async (req, res) => {
 // Endpoint to get all books
 app.get("/api/books", async (req, res) => {
   const books = await loadBooks();
-  res.json(books);
+  const { status, search } = req.query;
+
+  let filteredBooks = books;
+
+  if (status && status !== "all") {
+    filteredBooks = filteredBooks.filter(
+      (b) => b.status.toLowerCase() === status.toLowerCase()
+    );
+  }
+
+  if (search) {
+    filteredBooks = filteredBooks.filter(
+      (b) =>
+        b.title.toLowerCase().includes(search.toLowerCase()) ||
+        b.author.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  res.json(filteredBooks);
 });
 
-// Endpoint to get a single book by ID
 app.get("/api/books/:id", async (req, res) => {
   const books = await loadBooks();
   const book = books.find((b) => b.id === parseInt(req.params.id));
@@ -96,15 +113,6 @@ app.delete("/api/books/:id", async (req, res) => {
   books.splice(bookIndex, 1);
   await saveBooks(books);
   res.status(204).send();
-});
-
-// Endpoint to filter books by status
-app.get("/api/books/filter/:status", async (req, res) => {
-  const books = await loadBooks();
-  const filteredBooks = books.filter(
-    (b) => b.status.toLowerCase() === req.params.status.toLowerCase()
-  );
-  res.json(filteredBooks);
 });
 
 // Middleware to handle 404 - Not Found
