@@ -39,9 +39,7 @@ This application is a simple book library management system built using Node.js 
 
 ## Installation
 
-1. **Clone the Repository**
-    - git clone <repository-url>
-    - cd book-library
+1. **Download the source code and open book-library folder in the terminal**
 
 2.	**Install Dependencies**
     - npm install
@@ -52,7 +50,7 @@ This application is a simple book library management system built using Node.js 
     - npm start
 
 2.	**Open the Application**
-    - Open your browser and navigate to http://localhost:3000 to access the Book Library application.
+    - Open your browser and navigate to http://localhost:8080/index.html to access the Book Library application.
 
 ## Usage
 
