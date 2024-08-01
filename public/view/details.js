@@ -1,7 +1,7 @@
-// Event listener for when the DOM content is fully loaded
 document.addEventListener("DOMContentLoaded", async () => {
   // API URL for books
   const apiUrl = "http://localhost:3000/api/books";
+  
   // Get the book ID from the URL parameters
   const bookId = new URLSearchParams(window.location.search).get("id");
   if (!bookId) {

@@ -1,7 +1,7 @@
-// Event listener for when the DOM content is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   // API URL for books
   const apiUrl = "http://localhost:3000/api/books";
+
   // Function to create filter URL based on status and author/title
   const filterUrl = (status, authorOrTitle) => {
     let url = `${apiUrl}`;
@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to fetch books from the server
   const fetchBooks = async (url) => {
-    console.log("Fetching books from:", url);
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       booksList.innerHTML = "";
 
       if (books.length === 0) {
-        noBooksMessage.style.display = "block";
+        noBooksMessage.style.display = "flex";
       } else {
         noBooksMessage.style.display = "none";
 
@@ -91,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button onclick="toggleStatus(${
                   book.id
                 })" class="btn btn-sm btn-warning"><i class="fa fa-bookmark"></i>${
-            book.status === "Read" ? "Mark Unread" : "Mark Read"
+            book.status === "Read" ? "Mark as Unread" : "Mark as Read"
           }</button>
                 <button onclick="deleteBook(${
                   book.id

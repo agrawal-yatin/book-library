@@ -147,8 +147,10 @@ body {
 /* No Books Message */
 #noBooksMessage {
     font-size: 1.2em;
-    color: #777;
-    margin-top: 20px;
+    color: #525252;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 150px);
 }
 
 .book-item .card-body .action-buttons {

@@ -1,8 +1,8 @@
-const express = require("express"); // Express framework for building web applications
-const bodyParser = require("body-parser"); // Middleware to parse JSON bodies
-const fs = require("fs").promises; // File system module to interact with the file system
-const path = require("path"); // Module to handle and transform file paths
-const cors = require("cors"); // Middleware to enable CORS (Cross-Origin Resource Sharing)
+const express = require("express"); 
+const bodyParser = require("body-parser"); 
+const fs = require("fs").promises; 
+const path = require("path"); 
+const cors = require("cors");
 
 const app = express();
 const PORT = 3000;
@@ -55,7 +55,7 @@ app.post("/api/books", async (req, res) => {
     date: new Date().toISOString(),
   };
 
-  books.unshift(newBook); // Add the new book to the beginning of the array
+  books.unshift(newBook);
   await saveBooks(books);
   res.status(201).json(newBook);
 });

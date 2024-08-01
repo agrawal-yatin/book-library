@@ -2,13 +2,13 @@
 
 ## Overview
 
-This application is a simple book library management system built using Node.js and Express.js. It provides CRUD (Create, Read, Update, Delete) operations for managing a list of books. Users can add new books, view details of existing books, update their statuses, and delete them. Additionally, books can be filtered by their read/unread status.
+This application is a simple book library management system built using Node.js and Express.js. It provides CRUD (Create, Read, Update, Delete) operations for managing a list of books. Users can add new books, view details of existing books, update their statuses, and delete them. Additionally, books can be filtered by their read/unread status AND by Author Name or Title.
 
 ## Features
 
 - **Add Book**: Create new book entries.
 - **View Books**: List all books with details.
-- **Filter Books**: Filter books by read/unread status.
+- **Filter Books**: Filter books by read/unread status AND by Author Name or Title.
 - **Update Book Status**: Mark books as read or unread.
 - **Delete Book**: Remove books from the library.
 - **View Book Details**: Detailed view of a specific book.
@@ -64,7 +64,9 @@ This application is a simple book library management system built using Node.js 
    - All books are displayed on the main page.
 
 3. **Filter Books**
+   - Use the input box menu to filter books by Author Name or Title.
    - Use the dropdown menu to filter books by their status (Read/Unread).
+   - To reset the library to its orignal state, clear input box and click "Filter / Reset" button.
 
 4. **Update Book Status**
    - Click the “Mark Read” or “Mark Unread” button next to a book to update its status.
