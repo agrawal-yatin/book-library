@@ -64,6 +64,8 @@ This application is a simple book library management system built using Node.js 
    - All books are displayed on the main page.
 
 3. **Filter Books**
+   - There are 2 Types of Filters used : Dropdown and Input Box based.
+   - Both filters i.e Dropdown and Input box work in conjunction (AND Behaviour).
    - Use the input box menu to filter books by Author Name or Title.
    - Use the dropdown menu to filter books by their status (Read/Unread).
    - To reset the library to its orignal state, clear input box and click "Filter / Reset" button.
