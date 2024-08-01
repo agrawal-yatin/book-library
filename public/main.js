@@ -72,18 +72,22 @@ document.addEventListener("DOMContentLoaded", () => {
           bookItem.className = "book-item col-md-4";
           bookItem.innerHTML = `
             <div class="card mb-4 frosted-glass">
-              <img class="card-img-top" src="assets/book-placeholder.png" alt="Book image">
+            <div class="img-container"><img class="card-img-top" src="assets/book-placeholder.png" alt="Book image">
+</div>
               <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
                 <p class="card-text"><strong>Status:</strong> ${book.status}</p>
                  <div class="action-buttons">
-                  <p class="card-text"><strong>Description:</strong> ${
+                  <p class="card-text description-text"><strong>Description:</strong> ${
                     book.description
                   }</p>
                 <p class="card-text"><strong>Date Added:</strong> ${new Date(
                   book.date
                 ).toLocaleDateString()}</p>
+                <a href="view/details.html?id=${
+                  book.id
+                }" class="btn btn-sm btn-info"><i class="fa fa-bars"></i>View Details</a>
                 <button onclick="toggleStatus(${
                   book.id
                 })" class="btn btn-sm btn-warning"><i class="fa fa-home"></i>${
@@ -92,9 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button onclick="deleteBook(${
                   book.id
                 })" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
-                <a href="view/details.html?id=${
-                  book.id
-                }" class="btn btn-sm btn-info"><i class="fa fa-bars"></i>View Details</a>
                 </div>
               </div>
             </div>

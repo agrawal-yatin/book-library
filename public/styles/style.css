@@ -1,18 +1,21 @@
 body {
-  background: linear-gradient(135deg, #4bafd5, #ffffff);
+  background: #eeeeee;
   font-family: 'Arial', sans-serif;
   margin: 0;
 }
 
-.header {
-    background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  padding: 5px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+.sticky-header {
+   position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: #4f4f4f;
+}
+
+.sticky-header .container-fluid {
+    padding: 0 1rem; 
 }
 
 .logo {
@@ -28,8 +31,9 @@ body {
 #booksList {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 45px;
   justify-content: center;
+  padding: 25px 0;
 }
 
 .book-item {
@@ -39,15 +43,21 @@ body {
 }
 
 .frosted-glass {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  padding: 15px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  transition: transform 0.5s, box-shadow 0.5s;
-  min-height: 400px;
-    max-height: 400px;
+  background: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.5s, box-shadow 0.5s;
+    min-height: 310px;
+    max-height: 310px;
+    border-left: 5px solid #14a2b8;
+    border-top: none;
+    border-bottom: none;
+}
+
+.img-container {
+  padding: 15px 15px 0 15px;
 }
 
 .frosted-glass:hover {
@@ -57,16 +67,20 @@ body {
 
 .card-img-top {
   width: 100%;
-  max-height: 250px;
+  max-height: 185px;
   height: auto;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .card-body {
   text-align: center;
-  color: #333;
-  padding-right: 0;
+    color: #333;
+    padding-right: 0;
     padding-left: 0;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-title {
@@ -85,7 +99,11 @@ body {
 
 .card-text {
   font-size: 0.9em;
-  margin-bottom: 10px;
+    background: rgb(20 162 184 / 20%);
+    padding: 6px 0;
+    color: #14a2b8;
+    margin-bottom: 0;
+    border-bottom-right-radius: 6px;
 }
 
 /* Modal Styles */
@@ -135,54 +153,89 @@ body {
 
 .book-item .card-body .action-buttons {
   opacity: 0;
-  visibility: hidden; /* Updated from display: none; */
-  background-color: rgba(0, 0, 0, 0); /* Initial background-color */
-  transition: opacity 0.25s ease-in-out, background-color 0.25s ease-in-out, visibility 0.25s ease-in-out;
-  border-radius: 15px;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0);
+    transition: opacity 0.25s ease-in-out, background-color 0.25s ease-in-out, visibility 0.25s ease-in-out;
 }
 
 .book-item:hover .card-body .action-buttons {
   opacity: 1;
-  visibility: visible; /* Updated from display: flex; */
-  background-color: rgba(0, 0, 0, 0.6); /* Final background-color */
-  border-radius: 15px;
+  visibility: visible; 
+  background-color: rgba(0, 0, 0, 0.6); 
 }
 
 .action-buttons {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  padding: 50px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 10px 30px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.action-buttons i.fa {
+.action-buttons i {
     margin-right: 15px;
 }
 
 .action-buttons p.card-text {
     color: #ffffff;
     text-shadow: 1px 1px 2px #000000;
+    background: transparent;
 }
 
-/* Ensure the header remains fixed at the top */
-.sticky-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Ensures the header stays above other content */
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-    backdrop-filter: blur(10px); /* Apply a blur effect to the background */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
+
+#bookDetails {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #14a2b8;
 }
 
-/* Optional: Add additional styles for header elements */
-.sticky-header .container-fluid {
-    padding: 0 1rem; /* Adjust padding as needed */
+#bookDetails .card-img-top {
+    max-height: 400px;
+    border-radius: 0;
+}
+
+.details-padding {
+  padding: 25px 75px;
+}
+
+#bookDetails .card-text {
+  font-size: 0.9em;
+    padding: 6px 0;
+    border-bottom-right-radius: 0;
+}
+
+.height-100 {
+   height: 100%;
+}
+
+.detail-description {
+  text-align: left;
+  padding: 20px 30px;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly;
+}
+
+.author-title-details {
+  display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.description-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  line-height: 1.65em;
 }

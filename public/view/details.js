@@ -24,18 +24,36 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Display the book details
     bookDetails.innerHTML = `
-      <h5 class="card-title">${book.title}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
-      <p class="card-text"><strong>Status:</strong> ${book.status}</p>
-      <p class="card-text"><strong>Description:</strong> ${book.description}</p>
-      <p class="card-text"><strong>Date Added:</strong> ${new Date(
-        book.date
-      ).toLocaleDateString()}</p>
-    `;
+    <div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-3">
+      <img class="card-img-top" src="../assets/book-placeholder.png" alt="Book image">
+       <p class="card-text text-center"><strong>Status:</strong> ${
+         book.status
+       }</p>
+    </div>
+    <div class="col-md-9">
+    
+      <div class="card-body height-100">
+      <div class="author-title-details">
+        <h5 class="card-title">${book.title}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
+       
+        <p class="detail-description">${book.description}</p>
+    </div>
+       
+      
+         <p class="card-text"><strong>Date Added:</strong> ${new Date(
+           book.date
+         ).toLocaleDateString()}</p>
+      </div>
+    </div>
+  </div>
+</div>`;
 
     // Update button text based on current status
     markStatusBtn.textContent =
-      book.status === "Read" ? "Mark Unread" : "Mark Read";
+      book.status === "Read" ? "Mark as Unread" : "Mark as Read";
 
     // Mark status button click handler
     markStatusBtn.addEventListener("click", async () => {

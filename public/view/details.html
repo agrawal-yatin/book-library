@@ -6,26 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Details</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="icon" type="image/x-icon" sizes="32x32" href="../assets/favicon.ico">
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="my-4">Book Details</h1>
-        <div id="bookDetails" class="card mb-4">
-            <div class="card-body">
-                <!-- Book details will be displayed here -->
+    <!-- Header Section -->
+    <header class="py-2 shadow-sm sticky-header">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="../assets/logo.png" alt="Company Logo" class="logo mr-3">
+                <h2 class="m-0">Book Details</h2>
+            </div>
+            <div class="d-flex align-items-center">
+                <button id="markStatus" class="btn btn-info mr-4">Mark Read/Unread</button>
+                <button id="deleteBook" class="btn btn-danger mr-4">Delete this Book</button>
+                <a href="../index.html" class="btn btn-info">Back to Library</a>
             </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <a href="../index.html" class="btn btn-primary">Back to Library</a>
-            <div>
-                <button id="markStatus" class="btn btn-info">Mark Read/Unread</button>
-                <button id="deleteBook" class="btn btn-danger">Delete</button>
-            </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container-fluid details-padding">
+        <div id="bookDetails">
+            <!-- Book details will be dynamically injected here -->
         </div>
+       
     </div>
+
     <script src="../view/details.js"></script>
 </body>
 
