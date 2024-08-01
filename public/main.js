@@ -87,10 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 ).toLocaleDateString()}</p>
                 <a href="view/details.html?id=${
                   book.id
-                }" class="btn btn-sm btn-info"><i class="fa fa-bars"></i>View Details</a>
+                }" class="btn btn-sm btn-info"><i class="fa fa-book"></i>View Details</a>
                 <button onclick="toggleStatus(${
                   book.id
-                })" class="btn btn-sm btn-warning"><i class="fa fa-home"></i>${
+                })" class="btn btn-sm btn-warning"><i class="fa fa-bookmark"></i>${
             book.status === "Read" ? "Mark Unread" : "Mark Read"
           }</button>
                 <button onclick="deleteBook(${
