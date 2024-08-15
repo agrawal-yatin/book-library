@@ -105,4 +105,4 @@ This application is a simple book library management system built using Node.js 
 
 ## Contact
 
-For any inquiries, please contact [yatin.agrawal@nagarro.com].
+For any inquiries, please contact [yatin_agrawal@live.com](mailto:yatin_agrawal@live.com).
